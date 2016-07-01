@@ -1,5 +1,5 @@
 # LSQR-cpp
-This is a c++ port initially performed by Luis Ibanez of the LSQR library of Chris Paige and Michael Saunders. The same methodology was applied to the LSMR library.
+This is a c++ port initially performed by Luis Ibanez of the LSQR library of Chris Paige and Michael Saunders. The same methodology was applied to the LSMR library of David Fong and Michael Saunders.
 
 The LSQR library can be found here: http://web.stanford.edu/group/SOL/software/lsqr/ <br>
 The LSMR library can be found hereL http://web.stanford.edu/group/SOL/software/lsmr/
