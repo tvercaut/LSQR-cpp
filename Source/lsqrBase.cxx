@@ -17,6 +17,7 @@
 #include "lsqrBase.h"
 
 #include <cmath>
+#include <iostream>
 
 lsqrBase::lsqrBase()
 {

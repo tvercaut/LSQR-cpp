@@ -16,8 +16,7 @@
 #ifndef LSQR_lsqr_h
 #define LSQR_lsqr_h
 
-#include <iostream>
-
+#include <iosfwd>
 
 /** \class lsqrBase
  *
