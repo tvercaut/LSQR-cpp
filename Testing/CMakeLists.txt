@@ -6,6 +6,7 @@ SET(KIT lsqr)
 CREATE_TEST_SOURCELIST(Tests ${KIT}CxxTests.cxx
   lsqrTest1.cxx
   lsqrTest2.cxx
+  lsmrTest2.cxx
   )
 
 SET (TestsToRun ${Tests})
@@ -23,4 +24,5 @@ ENDFUNCTION( SIMPLE_TEST  )
 
 SIMPLE_TEST( lsqrTest1 )
 SIMPLE_TEST( lsqrTest2 )
+SIMPLE_TEST( lsmrTest2 )
 
