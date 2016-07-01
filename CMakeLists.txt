@@ -1,0 +1,29 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.6) 
+IF(COMMAND CMAKE_POLICY)
+  CMAKE_POLICY(SET CMP0003 NEW)
+ENDIF(COMMAND CMAKE_POLICY)
+
+PROJECT(LSQR)
+
+INCLUDE(CTest)
+
+CONFIGURE_FILE(
+  ${PROJECT_SOURCE_DIR}/CTestCustom.cmake.in
+  ${PROJECT_BINARY_DIR}/CTestCustom.cmake
+  )
+
+CONFIGURE_FILE(
+  ${PROJECT_SOURCE_DIR}/Utilities/Scripts/computeCodeCoverageLocally.sh.in
+  ${PROJECT_BINARY_DIR}/computeCodeCoverageLocally.sh
+  )
+
+CONFIGURE_FILE(
+  ${PROJECT_SOURCE_DIR}/Utilities/Scripts/runValgrind.sh.in
+  ${PROJECT_BINARY_DIR}/runValgrind.sh
+  )
+
+
+INCLUDE_DIRECTORIES(Source)
+
+ADD_SUBDIRECTORY(Source)
+ADD_SUBDIRECTORY(Testing)
