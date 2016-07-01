@@ -16,64 +16,6 @@
 
 #include "lsqrDense.h"
 
-#define Abs(x) ((x) >= 0 ? (x) : -(x))
-
-#define CopyVector(n,x,y) \
-  { \
-  const double * xp = x; \
-  const double * xend = xp + n; \
-  double * yp = y; \
-  while( xp != xend ) \
-    { \
-    *yp++ = *xp++; \
-    } \
-  }
-
-#define AccumulateVector(n,x,y) \
-  { \
-  const double * xp = x; \
-  const double * xend = xp + n; \
-  double * yp = y; \
-  while( xp != xend ) \
-    { \
-    *yp++ += *xp++; \
-    } \
-  }
-
-#define AssignValueToVectorElements(n1,n2,v,x) \
-  { \
-  double * xp   = x + n1; \
-  double * xend = x + n2; \
-  while( xp != xend ) \
-    { \
-    *xp++ = v; \
-    } \
-  }
-
-#define AssignScalarValueToVectorElements(n1,n2,v,x) \
-  { \
-  double * xp   = x + n1; \
-  double * xend = x + n2; \
-  while( xp != xend ) \
-    { \
-    *xp++ = v; \
-    } \
-  }
-
-#define ElementWiseProductVector(n1,n2,x,y,z) \
-  { \
-  const double * xp   = x + n1; \
-  const double * xend = x + n2; \
-  double * yp = y; \
-  double * zp = z; \
-  while( xp != xend ) \
-    { \
-    *zp++ = *xp++ * *yp++; \
-    } \
-  }
-
-
-
 lsqrDense::lsqrDense()
 {
   this->A = 0;

@@ -13,8 +13,8 @@
      PURPOSE.  See the above copyright notices for more information.
 
 =========================================================================*/
-#ifndef __lsqrDense_h
-#define __lsqrDense_h
+#ifndef LSQR_lsqrDense_h
+#define LSQR_lsqrDense_h
 
 #include "lsqrBase.h"
 

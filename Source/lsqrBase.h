@@ -13,8 +13,8 @@
      PURPOSE.  See the above copyright notices for more information.
 
 =========================================================================*/
-#ifndef __itk_lsqr_h
-#define __itk_lsqr_h
+#ifndef LSQR_lsqr_h
+#define LSQR_lsqr_h
 
 #include <iostream>
 
@@ -299,9 +299,6 @@ public:
 private:
 
   void TerminationPrintOut();
-
-  double    *  wm;  // work vector
-  double    *  wn;  // work vector
 
   double Anorm;
   double Acond;

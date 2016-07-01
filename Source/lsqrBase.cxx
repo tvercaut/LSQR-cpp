@@ -15,65 +15,8 @@
 =========================================================================*/
 
 #include "lsqrBase.h"
-#include <math.h>
 
-#define Abs(x) ((x) >= 0 ? (x) : -(x))
-
-#define CopyVector(n,x,y) \
-  { \
-  const double * xp = x; \
-  const double * xend = xp + n; \
-  double * yp = y; \
-  while( xp != xend ) \
-    { \
-    *yp++ = *xp++; \
-    } \
-  }
-
-#define AccumulateVector(n,x,y) \
-  { \
-  const double * xp = x; \
-  const double * xend = xp + n; \
-  double * yp = y; \
-  while( xp != xend ) \
-    { \
-    *yp++ += *xp++; \
-    } \
-  }
-
-#define AssignValueToVectorElements(n1,n2,v,x) \
-  { \
-  double * xp   = x + n1; \
-  double * xend = x + n2; \
-  while( xp != xend ) \
-    { \
-    *xp++ = v; \
-    } \
-  }
-
-#define AssignScalarValueToVectorElements(n1,n2,v,x) \
-  { \
-  double * xp   = x + n1; \
-  double * xend = x + n2; \
-  while( xp != xend ) \
-    { \
-    *xp++ = v; \
-    } \
-  }
-
-#define ElementWiseProductVector(n1,n2,x,y,z) \
-  { \
-  const double * xp   = x + n1; \
-  const double * xend = x + n2; \
-  double * yp = y; \
-  double * zp = z; \
-  while( xp != xend ) \
-    { \
-    *zp++ = *xp++ * *yp++; \
-    } \
-  }
-
-
+#include <cmath>
 
 lsqrBase::lsqrBase()
 {
@@ -224,7 +167,7 @@ lsqrBase::SetOutputStream( std::ostream & os )
 double
 lsqrBase::D2Norm( double a, double b ) const
 {
-  const double scale = Abs(a) + Abs(b);
+  const double scale = std::abs(a) + std::abs(b);
   const double zero = 0.0;
 
   if( scale == zero )
@@ -264,7 +207,7 @@ lsqrBase::Dnrm2( unsigned int n, const double *x ) const
     if ( x[i] != 0.0 ) 
       {
       double dx = x[i];
-      const double absxi = Abs(dx);
+      const double absxi = std::abs(dx);
 
       if ( magnitudeOfLargestElement < absxi ) 
         {
@@ -345,14 +288,14 @@ Solve( unsigned int m, unsigned int n, const double * b, double * x )
   //  Set up the first vectors u and v for the bidiagonalization.
   //  These satisfy  beta*u = b,  alpha*v = A(transpose)*u.
   //-------------------------------------------------------------------
-  CopyVector( m, b, u );
-  AssignScalarValueToVectorElements( 0, n, zero, v );
-  AssignScalarValueToVectorElements( 0, n, zero, w );
-  AssignScalarValueToVectorElements( 0, n, zero, x );
+  std::copy( b, b+m, u );
+  std::fill( v, v+n, zero);
+  std::fill( w, w+n, zero);
+  std::fill( x, x+n, zero);
 
   if( this->wantse )
     {
-    AssignScalarValueToVectorElements( 0, n, zero, se );
+    std::fill( se, se+n, zero);
     }
 
   double alpha = zero;
@@ -369,7 +312,7 @@ Solve( unsigned int m, unsigned int n, const double * b, double * x )
   if( alpha > zero )
     {
     this->Scale( n, ( one / alpha ), v );
-    CopyVector( n, v, w );
+    std::copy( v, v+n, w );
     }
 
   this->Arnorm = alpha * beta;
@@ -584,7 +527,6 @@ Solve( unsigned int m, unsigned int n, const double * b, double * x )
 
     const double alfopt = sqrt( this->rnorm / ( dnorm * this->xnorm ) );
     test1  = this->rnorm / bnorm;
-    test2  = zero;
     test2  = this->Arnorm / ( this->Anorm * this->rnorm );
     test3  = one   / this->Acond;
     t1     = test1 / ( one + this->Anorm* xnorm / bnorm );
@@ -633,13 +575,13 @@ Solve( unsigned int m, unsigned int n, const double * b, double * x )
         this->nout->width(6);
         (*this->nout) << this->itn << " ";
         this->nout->precision(9);
-        this->nout->precision(17);
+        this->nout->width(17);
         (*this->nout) << x[0] << " ";
         this->nout->precision(2);
-        this->nout->precision(10);
+        this->nout->width(10);
         (*this->nout) << rnorm << " ";
         this->nout->precision(1);
-        this->nout->precision(9);
+        this->nout->width(9);
         (*this->nout) << test1 << " ";
         (*this->nout) << test2 << " ";
         (*this->nout) << this->Anorm << " ";
