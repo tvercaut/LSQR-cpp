@@ -2,8 +2,8 @@
 
   Program:   Insight Segmentation & Registration Toolkit
   Language:  C++
-  Date:      $Date: 2010-04-14 19:43:36 $
-  Version:   $Revision: 1.3 $
+  Date:      $Date$
+  Version:   $Revision$
 
   Copyright (c) Insight Software Consortium. All rights reserved.
   See ITKCopyright.txt or http://www.itk.org/HTML/Copyright.htm for details.
@@ -723,7 +723,7 @@ TerminationPrintOut()
     {
     std::string exitt = " Exit LSQR. ";
 
-    (*this->nout) << exitt;
+    (*this->nout) << exitt.c_str();
     (*this->nout) << "istop = ";
     this->nout->width(6);
     (*this->nout) << istop;
@@ -734,7 +734,7 @@ TerminationPrintOut()
 
     (*this->nout) << std::endl;
 
-    (*this->nout) << exitt;
+    (*this->nout) << exitt.c_str();
     (*this->nout) << "Anorm = ";
     this->nout->precision(5);
     this->nout->width(12);
@@ -747,7 +747,7 @@ TerminationPrintOut()
 
     (*this->nout) << std::endl;
 
-    (*this->nout) << exitt;
+    (*this->nout) << exitt.c_str();
     (*this->nout) << "bnorm = ";
     this->nout->precision(5);
     this->nout->width(12);
@@ -760,7 +760,7 @@ TerminationPrintOut()
 
     (*this->nout) << std::endl;
 
-    (*this->nout) << exitt;
+    (*this->nout) << exitt.c_str();
     (*this->nout) << "rnorm = ";
     this->nout->precision(5);
     this->nout->width(12);
@@ -773,7 +773,7 @@ TerminationPrintOut()
 
     (*this->nout) << std::endl;
 
-    (*this->nout) << exitt;
+    (*this->nout) << exitt.c_str();
     (*this->nout) << "max dx = ";
     this->nout->precision(1);
     this->nout->width(8);
@@ -787,12 +787,12 @@ TerminationPrintOut()
 
     (*this->nout) << std::endl;
 
-    (*this->nout) << exitt;
+    (*this->nout) << exitt.c_str();
     (*this->nout) << this->dxmax / (this->xnorm+1.0e-30);
 
     (*this->nout) << std::endl;
 
-    (*this->nout) << exitt;
+    (*this->nout) << exitt.c_str();
 
     switch( this->istop )
       {

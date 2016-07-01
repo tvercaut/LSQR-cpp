@@ -2,8 +2,8 @@
 
   Program:   Insight Segmentation & Registration Toolkit
   Language:  C++
-  Date:      $Date: 2010-04-14 19:43:36 $
-  Version:   $Revision: 1.2 $
+  Date:      $Date$
+  Version:   $Revision$
 
   Copyright (c) Insight Software Consortium. All rights reserved.
   See ITKCopyright.txt or http://www.itk.org/HTML/Copyright.htm for details.
