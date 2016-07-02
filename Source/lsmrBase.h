@@ -17,7 +17,6 @@
 #define LSQR_lsmr_h
 
 #include <iosfwd>
-#include <iostream>
 
 
 /** \class lsmrBase
@@ -497,9 +496,6 @@ public:
 private:
 
   void TerminationPrintOut();
-
-  double * wm;  // work vector
-  double * wn;  // work vector
 
   double normA;
   double condA;
