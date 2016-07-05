@@ -9,3 +9,7 @@ The original c++ port of LSQR can be found here: http://svn.na-mic.org/NAMICSand
 This work was performed to integrate it into the Insight Toolkit (ITK): https://itk.org
 
 https://issues.itk.org/jira/browse/HISTITK-1160
+
+--
+
+LSQR and LSMR can solve sparse, dense and matrix-free linear equations and linear least-squares problems including damped least-squares.
