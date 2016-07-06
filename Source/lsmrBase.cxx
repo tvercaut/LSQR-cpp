@@ -1,18 +1,20 @@
 /*=========================================================================
-
-  Program:   Insight Segmentation & Registration Toolkit
-  Language:  C++
-  Date:      $Date$
-  Version:   $Revision$
-
-  Copyright (c) Insight Software Consortium. All rights reserved.
-  See ITKCopyright.txt or http://www.itk.org/HTML/Copyright.htm for details.
-
-  This software is distributed WITHOUT ANY WARRANTY; without even 
-  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
-  PURPOSE.  See the above copyright notices for more information.
-
-  =========================================================================*/
+ *
+ *  Copyright Insight Software Consortium
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0.txt
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ *=========================================================================*/
 
 #include "lsmrBase.h"
 
@@ -198,14 +200,6 @@ lsmrBase::Scale( unsigned int n, double factor, double *x ) const
       *x++ *= factor;
     }
 }
-
-
-/*
-  inline double lsmrBase::Dnrm2( unsigned int n, const double *x ) const
-  {
-  int incx = 1;
-  return dnrm2_( (int*) &n, const_cast<double*>( x ), &incx );
-  }*/
 
 double
 lsmrBase::Dnrm2( unsigned int n, const double *x ) const
@@ -394,7 +388,7 @@ Solve( unsigned int m, unsigned int n, const double * b, double * x )
     //----------------------------------------------------------------
     this->Scale( m, (-alpha), u );
 
-    this->Aprod1( m, n, v, u );   //   u = A * v
+    this->Aprod1( m, n, v, u );   //   u = u + A * v
 
     beta = this->Dnrm2( m, u );
 

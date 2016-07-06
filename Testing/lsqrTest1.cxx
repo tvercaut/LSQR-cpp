@@ -1,18 +1,20 @@
 /*=========================================================================
-
-  Program:   Insight Segmentation & Registration Toolkit
-  Language:  C++
-  Date:      $Date$
-  Version:   $Revision$
-
-  Copyright (c) Insight Software Consortium. All rights reserved.
-  See ITKCopyright.txt or http://www.itk.org/HTML/Copyright.htm for details.
-
-     This software is distributed WITHOUT ANY WARRANTY; without even 
-     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
-     PURPOSE.  See the above copyright notices for more information.
-
-=========================================================================*/
+ *
+ *  Copyright Insight Software Consortium
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0.txt
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ *=========================================================================*/
 
 #include "lsqrDense.h"
 
@@ -44,7 +46,7 @@ int lsqrTest1( int , char * [] )
   std::cout << x[0] << " " << x[1] << std::endl;
 
   { // Test 1 Dnrm2()
-  unsigned int n1 = 5;
+  const unsigned int n1 = 5;
   double x1[n1];
   x1[0] = 1.0;
   x1[1] = 1.0;
@@ -70,7 +72,7 @@ int lsqrTest1( int , char * [] )
   }
 
   { // Test 2 Dnrm2()
-  unsigned int n2 = 5;
+  const unsigned int n2 = 5;
 
   const double dominantValue = 1e+300;
 
