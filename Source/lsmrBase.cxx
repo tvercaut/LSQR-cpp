@@ -70,6 +70,44 @@ lsmrBase::GetStoppingReason() const
 }
 
 
+std::string
+lsmrBase::GetStoppingReasonMessage() const
+{
+  std::string msg;
+  switch( this->istop )
+    {
+    case 0:
+      msg = "The exact solution is  x = 0";
+      break;
+    case 1:
+      msg = "Ax - b is small enough, given atol, btol";
+      break;
+    case 2:
+      msg = "The least-squares solution is good enough, given atol";
+      break;
+    case 3:
+      msg = "The estimate of cond(Abar) has exceeded conlim";
+      break;
+    case 4:
+      msg = "Ax - b is small enough for this machine";
+      break;
+    case 5:
+      msg = "The LS solution is good enough for this machine";
+      break;
+    case 6:
+      msg = "Cond(Abar) seems to be too large for this machine";
+      break;
+    case 7:
+      msg = "The iteration limit has been reached";
+      break;
+    default:
+      msg = "Error. Unknown stopping reason";
+      break;
+    }
+  return msg;
+}
+
+
 unsigned int
 lsmrBase::GetNumberOfIterationsPerformed() const
 {
@@ -580,16 +618,6 @@ Solve( unsigned int m, unsigned int n, const double * b, double * x )
 void lsmrBase::
 TerminationPrintOut()
 {
-  const char * msg[] = {
-    "The exact solution is  x = 0                         ",
-    "Ax - b is small enough, given atol, btol             ",
-    "The least-squares solution is good enough, given atol",
-    "The estimate of cond(Abar) has exceeded conlim       ",
-    "Ax - b is small enough for this machine              ",
-    "The LS solution is good enough for this machine      ",
-    "Cond(Abar) seems to be too large for this machine    ",
-    "The iteration limit has been reached                 " };
-
   if ( this->damped && this->istop==2 ) this->istop=3;
 
   if ( this->nout ) {
@@ -597,6 +625,6 @@ TerminationPrintOut()
 		  << " Exit  LSMR.       normA  = " << this->normA << "     ,condA  = " << this->condA << std::endl
 		  << " Exit  LSMR.       normb  = " << this->normb << "     ,normx  = " << this->normx << std::endl
 		  << " Exit  LSMR.       normr  = " << this->normr << "     ,normAr = " << this->normAr << std::endl
-		  << " Exit  LSMR.       " << msg[this->istop] << std::endl;
+		  << " Exit  LSMR.       " << this->GetStoppingReasonMessage() << std::endl;
   }
 }

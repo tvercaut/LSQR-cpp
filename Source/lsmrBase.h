@@ -434,6 +434,13 @@ public:
    */
   unsigned int GetStoppingReason() const;
 
+  /** 
+   *   Returns an string giving the reason for termination.
+   *   Expands on GetStoppingReason
+   *
+   */
+  std::string GetStoppingReasonMessage() const;
+
 
   /** Returns the actual number of iterations performed. */
   unsigned int GetNumberOfIterationsPerformed() const;
