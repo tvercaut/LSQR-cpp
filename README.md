@@ -13,3 +13,7 @@ https://issues.itk.org/jira/browse/HISTITK-1160
 --
 
 LSQR and LSMR can solve sparse, dense and matrix-free linear equations and linear least-squares problems including damped least-squares.
+
+--
+
+The project uses `cmake` as a build process manager. Please have a look at the [cmake documentation](https://cmake.org/runningcmake/) for information on how to build a `cmake`-based project such as this one.
