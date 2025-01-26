@@ -1,29 +1,46 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6) 
-IF(COMMAND CMAKE_POLICY)
-  CMAKE_POLICY(SET CMP0003 NEW)
-ENDIF(COMMAND CMAKE_POLICY)
+cmake_minimum_required(VERSION 3.25)
+project(LSQR-cpp)
 
-PROJECT(LSQR)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-INCLUDE(CTest)
+# Default to release build
+if(NOT CMAKE_BUILD_TYPE)
+  #set(CMAKE_BUILD_TYPE Release)
+  set(CMAKE_BUILD_TYPE RelWithDebInfo)
+  #set(CMAKE_BUILD_TYPE Debug)
+endif()
+message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
 
-CONFIGURE_FILE(
-  ${PROJECT_SOURCE_DIR}/CTestCustom.cmake.in
-  ${PROJECT_BINARY_DIR}/CTestCustom.cmake
-  )
+if(MSVC)
+  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
+  set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
+  set(CompilerFlags
+          CMAKE_CXX_FLAGS
+          CMAKE_CXX_FLAGS_DEBUG
+          CMAKE_CXX_FLAGS_RELEASE
+          CMAKE_C_FLAGS
+          CMAKE_C_FLAGS_DEBUG
+          CMAKE_C_FLAGS_RELEASE)
+  foreach(CompilerFlag ${CompilerFlags})
+    string(REPLACE "/MD" "/MT" ${CompilerFlag} "${${CompilerFlag}}")
+  endforeach()
+  message(STATUS "CXX flags (release): ${CMAKE_CXX_FLAGS_RELEASE}")
+  message(STATUS "CXX flags (debug): ${CMAKE_CXX_FLAGS_DEBUG}")
+endif()
 
-CONFIGURE_FILE(
-  ${PROJECT_SOURCE_DIR}/Utilities/Scripts/computeCodeCoverageLocally.sh.in
-  ${PROJECT_BINARY_DIR}/computeCodeCoverageLocally.sh
-  )
+# Warnings and other compiler flags
+if(MSVC)
+  add_compile_options(/W4)
+  string( REPLACE "/DNDEBUG" "" CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO}")
+else()
+  add_compile_options(-Wall -Wextra -Wpedantic -Wno-gnu-zero-variadic-macro-arguments)
+  string( REPLACE "-DNDEBUG" "" CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO}")
+endif()
 
-CONFIGURE_FILE(
-  ${PROJECT_SOURCE_DIR}/Utilities/Scripts/runValgrind.sh.in
-  ${PROJECT_BINARY_DIR}/runValgrind.sh
-  )
+enable_testing()
 
+include_directories(Source)
 
-INCLUDE_DIRECTORIES(Source)
-
-ADD_SUBDIRECTORY(Source)
-ADD_SUBDIRECTORY(Testing)
+add_subdirectory(Source)
+add_subdirectory(Testing)
