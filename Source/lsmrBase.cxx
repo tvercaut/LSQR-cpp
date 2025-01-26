@@ -620,8 +620,6 @@ Solve( unsigned int m, unsigned int n, const double * b, double * x )
 void lsmrBase::
 TerminationPrintOut()
 {
-  if ( this->damped && this->istop==2 ) this->istop=3;
-
   if ( this->nout ) {
     (*this->nout) << " Exit  LSMR.       istop  = " << this->istop << "     ,itn    = " << this->itn << std::endl
 		  << " Exit  LSMR.       normA  = " << this->normA << "     ,condA  = " << this->condA << std::endl
