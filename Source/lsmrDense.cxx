@@ -15,18 +15,15 @@
  *  limitations under the License.
  *
  *=========================================================================*/
-
 #include "lsmrDense.h"
 
 lsmrDense::lsmrDense()
 {
-  this->A = 0;
+  this->A = nullptr;
 }
 
 
-lsmrDense::~lsmrDense()
-{
-}
+lsmrDense::~lsmrDense() = default;
 
 
 void
