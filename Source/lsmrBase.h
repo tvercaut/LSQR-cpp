@@ -19,6 +19,7 @@
 #define LSQR_lsmr_h
 
 #include <iosfwd>
+#include <string>
 
 /** \class lsmrBase
  *

@@ -19,6 +19,7 @@
 #define LSQR_lsqr_h
 
 #include <iosfwd>
+#include <string>
 
 /** \class lsqrBase
  *
