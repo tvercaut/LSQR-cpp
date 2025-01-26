@@ -24,9 +24,9 @@
 /** \class lsqrDense
  *
  * Specific implementation of the solver for a type of dense Matrix.
- *  
+ *
  */
-class lsqrDense : public lsqrBase 
+class lsqrDense : public lsqrBase
 {
 public:
 
@@ -48,7 +48,7 @@ public:
    * The size of the vector y is m.
    */
   void Aprod2(unsigned int m, unsigned int n, double * x, const double * y ) const;
-  
+
   /** Householder Transformation: reflects the vector "x" across the
    * hyperplane whose normal is defined by vector "z". The dimension of
    * the hyperspace is given by "n". */
@@ -62,4 +62,4 @@ private:
   double ** A;
 };
 
-#endif 
+#endif

@@ -322,7 +322,7 @@ Solve( unsigned int m, unsigned int n, const double * b, double * x )
   std::fill( v, v+n, zero);
   std::fill( w, v+n, zero);
   std::fill( x, x+n, zero);
-  
+
   this->Scale( m, (-1.0), u );
   this->Aprod1( m, n, x, u );
   this->Scale( m, (-1.0), u );
