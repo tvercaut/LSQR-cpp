@@ -118,14 +118,14 @@ lsqrBase::GetFinalEstimateOfNormRbar() const
 }
 
 
-double 
+double
 lsqrBase::GetFinalEstimateOfNormOfResiduals() const
 {
   return this->Arnorm;
 }
 
 
-double 
+double
 lsqrBase::GetFinalEstimateOfNormOfX() const
 {
   return this->xnorm;
@@ -209,7 +209,7 @@ lsqrBase::D2Norm( double a, double b ) const
     {
     return zero;
     }
-  
+
   const double sa = a / scale;
   const double sb = b / scale;
 
@@ -239,12 +239,12 @@ lsqrBase::Dnrm2( unsigned int n, const double *x ) const
 
   for ( unsigned int i = 0; i < n; i++ )
     {
-    if ( x[i] != 0.0 ) 
+    if ( x[i] != 0.0 )
       {
       double dx = x[i];
       const double absxi = std::abs(dx);
 
-      if ( magnitudeOfLargestElement < absxi ) 
+      if ( magnitudeOfLargestElement < absxi )
         {
         // rescale the sum to the range of the new element
         dx = magnitudeOfLargestElement / absxi;
@@ -266,7 +266,7 @@ lsqrBase::Dnrm2( unsigned int n, const double *x ) const
 }
 
 
-/** 
+/**
  *
  *  The array b must have size m
  *
@@ -281,16 +281,16 @@ Solve( unsigned int m, unsigned int n, const double * b, double * x )
     {
     (*this->nout) << "Enter LSQR " << std::endl;
     (*this->nout) << m << ", " << n << std::endl;
-    (*this->nout) << this->damp << ", " << this->wantse << std::endl; 
-    (*this->nout) << this->atol << ", " << this->conlim << std::endl; 
-    (*this->nout) << this->btol << ", " << this->itnlim << std::endl; 
+    (*this->nout) << this->damp << ", " << this->wantse << std::endl;
+    (*this->nout) << this->atol << ", " << this->conlim << std::endl;
+    (*this->nout) << this->btol << ", " << this->itnlim << std::endl;
     }
 
   this->damped = ( this->damp > zero );
 
   this->itn = 0;
   this->istop = 0;
-  
+
   unsigned int nstop = 0;
   this->maxdx = 0;
 
@@ -363,7 +363,7 @@ Solve( unsigned int m, unsigned int n, const double * b, double * x )
 
     return;
     }
-  
+
   double rhobar = alpha;
   double phibar = beta;
 
@@ -372,7 +372,7 @@ Solve( unsigned int m, unsigned int n, const double * b, double * x )
 
   double test1 = 0.0;
   double test2 = 0.0;
-  
+
 
   if ( this->nout )
     {
@@ -416,7 +416,7 @@ Solve( unsigned int m, unsigned int n, const double * b, double * x )
   //
   do {
 
-    this->itn++; 
+    this->itn++;
 
     //----------------------------------------------------------------
     //  Perform the next step of the bidiagonalization to obtain the
@@ -488,7 +488,7 @@ Solve( unsigned int m, unsigned int n, const double * b, double * x )
     double t3     =     one / rho;
     double dknorm =    zero;
 
-    if ( this->wantse ) 
+    if ( this->wantse )
       {
       for ( unsigned int i = 0; i < n; i++ )
         {
@@ -649,7 +649,7 @@ Solve( unsigned int m, unsigned int n, const double * b, double * x )
         }
       }
 
-    } while ( istop == 0); 
+    } while ( istop == 0);
 
   //===================================================================
   // End of iteration loop.

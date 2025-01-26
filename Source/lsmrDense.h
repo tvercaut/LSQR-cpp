@@ -24,9 +24,9 @@
 /** \class lsmrDense
  *
  * Specific implementation of the solver for a type of dense Matrix.
- *  
+ *
  */
-class lsmrDense : public lsmrBase 
+class lsmrDense : public lsmrBase
 {
 public:
 
@@ -57,4 +57,4 @@ private:
   double ** A;
 };
 
-#endif 
+#endif

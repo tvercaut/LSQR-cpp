@@ -445,7 +445,7 @@ public:
    */
   unsigned int GetStoppingReason() const;
 
-  /** 
+  /**
    *   Returns an string giving the reason for termination.
    *   Expands on GetStoppingReason
    *
