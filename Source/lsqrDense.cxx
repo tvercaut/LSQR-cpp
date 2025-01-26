@@ -77,7 +77,7 @@ Aprod2(unsigned int m, unsigned int n, double * x, const double * y ) const
 }
 
 
-/* 
+/*
 
   returns x = (I - 2*z*z')*x.
 
@@ -111,5 +111,3 @@ HouseholderTransformation(unsigned int n, const double * z, double * x ) const
     *xp++ -= scalarProduct * (*zp++);
     }
 }
-
-

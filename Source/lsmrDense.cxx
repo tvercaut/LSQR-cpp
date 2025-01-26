@@ -75,5 +75,3 @@ Aprod2(unsigned int m, unsigned int n, double * x, const double * y ) const
     x[col] +=  sum;
     }
 }
-
-

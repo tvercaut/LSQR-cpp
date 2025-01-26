@@ -57,7 +57,7 @@ int lsqrTest1( int , char * [] )
   const double norm =solver.Dnrm2( n1, x1 );
   const double expectedNorm = sqrt(5.0);
 
-  const double ratioOfDifference = 
+  const double ratioOfDifference =
     fabs( norm - expectedNorm ) / expectedNorm;
 
   if( ratioOfDifference > tolerance )
@@ -67,7 +67,7 @@ int lsqrTest1( int , char * [] )
     std::cerr << "Received = " << norm << std::endl;
     std::cerr << "ratioOfDifference = " << ratioOfDifference << std::endl;
     return EXIT_FAILURE;
-    } 
+    }
   std::cout << "Dnrm2 test 1 passed " << std::endl;
   }
 
@@ -86,7 +86,7 @@ int lsqrTest1( int , char * [] )
   const double norm =solver.Dnrm2( n2, x2 );
   const double expectedNorm = dominantValue;
 
-  const double ratioOfDifference = 
+  const double ratioOfDifference =
     fabs( norm - expectedNorm ) / expectedNorm;
 
   if( ratioOfDifference > tolerance )
@@ -96,7 +96,7 @@ int lsqrTest1( int , char * [] )
     std::cerr << "Received = " << norm << std::endl;
     std::cerr << "ratioOfDifference = " << ratioOfDifference << std::endl;
     return EXIT_FAILURE;
-    } 
+    }
   std::cout << "Dnrm2 test 2 passed " << std::endl;
   }
 
@@ -108,7 +108,7 @@ int lsqrTest1( int , char * [] )
   const double b = minorValue;
   const double d2norm = solver.D2Norm( a, b );
 
-  const double ratioOfDifference = 
+  const double ratioOfDifference =
     fabs( d2norm - dominantValue ) / dominantValue;
 
   if( ratioOfDifference > tolerance )
@@ -117,7 +117,7 @@ int lsqrTest1( int , char * [] )
     std::cerr << "Expected = " << dominantValue << std::endl;
     std::cerr << "Received = " << d2norm << std::endl;
     return EXIT_FAILURE;
-    } 
+    }
   std::cout << "D2Norm test 1 passed " << std::endl;
   }
 
@@ -129,7 +129,7 @@ int lsqrTest1( int , char * [] )
   const double d2norm = solver.D2Norm( a, b );
   const double expectedD2norm = sqrt( a*a + b*b );
 
-  const double ratioOfDifference = 
+  const double ratioOfDifference =
     fabs( d2norm - expectedD2norm ) / expectedD2norm;
 
   if( ratioOfDifference > tolerance )
@@ -138,7 +138,7 @@ int lsqrTest1( int , char * [] )
     std::cerr << "Expected = " << expectedD2norm << std::endl;
     std::cerr << "Received = " << d2norm << std::endl;
     return EXIT_FAILURE;
-    } 
+    }
   std::cout << "D2Norm test 2 passed " << std::endl;
   }
 
@@ -157,7 +157,7 @@ int lsqrTest1( int , char * [] )
     std::cerr << "Expected = " << zero << std::endl;
     std::cerr << "Received = " << d2norm << std::endl;
     return EXIT_FAILURE;
-    } 
+    }
   std::cout << "D2Norm test 3 passed " << std::endl;
   }
 
@@ -182,7 +182,7 @@ int lsqrTest1( int , char * [] )
   solver.SetStandardErrorEstimatesFlag( true );
 
 
-  { // basic test for Scale() 
+  { // basic test for Scale()
   const double factor = 8.0;
   const unsigned int mm = 5;
   double xx[mm];
@@ -196,7 +196,7 @@ int lsqrTest1( int , char * [] )
   for ( unsigned int i = 0; i < mm; i++ )
     {
     const double expectedValue = ( i*5.0*factor );
-    const double ratioOfDifference = 
+    const double ratioOfDifference =
       fabs( xx[i] - expectedValue ) / expectedValue;
 
     if ( ratioOfDifference > tolerance )
@@ -208,7 +208,7 @@ int lsqrTest1( int , char * [] )
   }
 
 
-  { // basic test for Aprod1() 
+  { // basic test for Aprod1()
   const unsigned int mm = 2;
   const unsigned int nn = 2;
   double xx[nn];
@@ -231,7 +231,7 @@ int lsqrTest1( int , char * [] )
   std::cout << "yy = " << yy[0] << " " << yy[1] << std::endl;
   }
 
-  { // basic test for Aprod1() 
+  { // basic test for Aprod1()
   const unsigned int mm = 2;
   const unsigned int nn = 3;
   double xx[nn];
@@ -257,7 +257,7 @@ int lsqrTest1( int , char * [] )
   std::cout << "yy = " << yy[0] << " " << yy[1] << std::endl;
   }
 
-  { // basic test for Aprod1() 
+  { // basic test for Aprod1()
   const unsigned int mm = 3;
   const unsigned int nn = 2;
   double xx[nn];
@@ -284,7 +284,7 @@ int lsqrTest1( int , char * [] )
   std::cout << "yy = " << yy[0] << " " << yy[1] << " " << yy[2] << std::endl;
   }
 
-  { // basic test for Aprod2() 
+  { // basic test for Aprod2()
   const unsigned int mm = 2;
   const unsigned int nn = 2;
   double xx[nn];
@@ -307,7 +307,7 @@ int lsqrTest1( int , char * [] )
   std::cout << "xx = " << xx[0] << " " << xx[1] << std::endl;
   }
 
-  { // basic test for Aprod2() 
+  { // basic test for Aprod2()
   const unsigned int mm = 2;
   const unsigned int nn = 3;
   double xx[nn];
@@ -333,7 +333,7 @@ int lsqrTest1( int , char * [] )
   std::cout << "xx = " << xx[0] << " " << xx[1] << " " << xx[2] << std::endl;
   }
 
-  { // basic test for Aprod2() 
+  { // basic test for Aprod2()
   const unsigned int mm = 3;
   const unsigned int nn = 2;
   double xx[nn];
@@ -360,7 +360,7 @@ int lsqrTest1( int , char * [] )
   std::cout << "xx = " << xx[0] << " " << xx[1] << std::endl;
   }
 
-  { // basic test for Solve() 
+  { // basic test for Solve()
   const unsigned int mm = 2;
   const unsigned int nn = 2;
   double bb[nn];
@@ -383,7 +383,7 @@ int lsqrTest1( int , char * [] )
   std::cout << "xx = " << xx[0] << " " << xx[1] << std::endl;
   }
 
-  { // basic test for Solve() 
+  { // basic test for Solve()
   const unsigned int mm = 2;
   const unsigned int nn = 2;
   double bb[nn];
@@ -410,7 +410,7 @@ int lsqrTest1( int , char * [] )
   }
 
 
-  { // basic test for Solve() 
+  { // basic test for Solve()
   const unsigned int mm = 2;
   const unsigned int nn = 2;
   double bb[nn];
