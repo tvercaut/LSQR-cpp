@@ -54,7 +54,7 @@ int lsmrTest2( int , char * [] )
   bb[2] = 2.0;
 
   //  -3  5
-  typedef double * RowType;
+  using RowType = double *;
   RowType A[mm];
   double AA[6];
   A[0] = &(AA[0]);
